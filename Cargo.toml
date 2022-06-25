@@ -9,9 +9,9 @@ edition = "2021"
 name = "grpc-server"
 path = "src/server.rs"
 
-# [[bin]]
-# name = "grpc-client"
-# path = "src/client.rs"
+[[bin]]
+name = "grpc-client"
+path = "src/client.rs"
 
 [dependencies]
 tonic = "0.7"
