@@ -15,7 +15,9 @@ pub struct TodoService {
 #[tonic::async_trait]
 impl Todo for TodoService {
     async fn get_todos(&self, _: Request<()>) -> Result<Response<GetTodosResponse>, Status> {
-        let message = GetTodosResponse { todos: self.todos.lock().unwrap().to_vec() };
+        let message = GetTodosResponse {
+            todos: self.todos.lock().unwrap().to_vec()
+        };
 
         Ok(Response::new(message))
     }
