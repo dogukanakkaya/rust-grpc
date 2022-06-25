@@ -15,6 +15,18 @@ message GetTodosResponse {
     repeated TodoItem todos = 1;
 }
 
+message CreateTodoRequest {
+    string name = 1;
+    string description = 2;
+    int32 priority = 3;
+}
+
+message CreateTodoResponse {
+    TodoItem todo = 1;
+    bool status = 2;
+}
+
 service Todo {
     rpc GetTodos(google.protobuf.Empty) returns (GetTodosResponse);
+    rpc CreateTodo(CreateTodoRequest) returns (CreateTodoResponse);
 }

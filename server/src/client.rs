@@ -1,4 +1,5 @@
 use todo::todo_client::TodoClient;
+use todo::{CreateTodoRequest};
 
 pub mod todo {
     tonic::include_proto!("todo");
@@ -13,4 +14,16 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let response = client.get_todos(request).await?;
 
     println!("RESPONSE={:?}", response.into_inner().todos);
+
+    let create_request = tonic::Request::new(CreateTodoRequest {
+        name: "test name".to_string(),
+        description: "test description".to_string(),
+        priority: 1,
+    });
+
+    let create_response = client.create_todo(create_request).await?;
+
+    println!("CREATE_RESPONSE={:?}", create_response.into_inner().todo);
+
+    Ok(())
 }
