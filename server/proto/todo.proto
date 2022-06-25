@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+
+package todo;
+
+message TodoItem {
+    string name = 1;
+    string description = 2;
+    int32 priority = 3;
+    bool completed = 4;
+}
+
+message GetTodosResponse {
+    repeated TodoItem todos = 1;
+}
+
+service Todo {
+    rpc GetTodos(google.protobuf.Empty) returns (GetTodosResponse);
+}
