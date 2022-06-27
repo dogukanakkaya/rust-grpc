@@ -5,7 +5,7 @@ const app = express();
 app.use(express.json());
 
 app.get('/todos', async (_: Request, res: Response) => {
-    const { todos } = await getTodos();
+    const { todos } = await getTodos({});
 
     res.json({ todos });
 });
